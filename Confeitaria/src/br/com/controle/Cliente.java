@@ -20,6 +20,10 @@ public class Cliente {
     private Date dataNascimento;        // Data de nascimento do cliente
     private String cpf;                 // CPF do cliente
 
+    public Cliente(String nome, String endereco, String telefone, String cpf, String email, String dataNascimento) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getId() {
         return id;
     }
