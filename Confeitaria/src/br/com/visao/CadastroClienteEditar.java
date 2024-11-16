@@ -74,7 +74,7 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText("Cadastro de Clientes: Editar Cadastro");
+        jLabel2.setText("Editar Cliente:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Nome:");
