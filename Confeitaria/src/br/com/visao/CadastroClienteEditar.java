@@ -5,6 +5,10 @@
 package br.com.visao;
 
 import br.com.controle.Cliente;
+import br.com.entidade.CRUDCliente;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -205,33 +209,49 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
 
     private void jNomeCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeCadActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jNomeCadActionPerformed
 
     private void jBcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcadastrarActionPerformed
         // TODO add your handling code here:
         jBcadastrar.addActionListener(e -> {
-    // Coletar os valores dos campos
-    String nome = jNomeCad.getText(); 
-    String endereco = jTEnderecocad.getText();
-    String telefone = jTtelefoneCad.getText();
-    String cpf = jTcpf.getText();
-    String email = jTemail.getText();
-    String dataNascimento = jTdatadenascimento.getText();
+            // Coletar os valores dos campos
+            String nome = jNomeCad.getText();
+            String endereco = jTEnderecocad.getText();
+            String telefone = jTtelefoneCad.getText();
+            String cpf = jTcpf.getText();
+            String email = jTemail.getText();
+//    String dataNascimento = jTdatadenascimento.getText();
 
-    // Criar objeto da classe Cliente
-    Cliente cliente = new Cliente(nome, endereco, telefone, cpf, email, dataNascimento);
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-    // Exibir informações (pode ser substituído por salvar no banco ou outra funcionalidade)
-    System.out.println(cliente.toString());
+            try {
+                // Converter String para Date
+                Date data = formato.parse(jTdatadenascimento.getText());
+                // Criar objeto da classe Cliente
+                Cliente cliente = new Cliente(nome, endereco, telefone, cpf, email, data); // tem que arrumar
+                //não é pra crir um novo objeto cliente mas receber um para atualizar
+                CRUDCliente c = new CRUDCliente();
+                try {
+                    c.atualizar(cliente);
+                } catch (Exception e1) {
+                    System.out.println("Erro ao inserir cliente no banco de dados: " + e1.getMessage());
+                }
 
-    // Limpar os campos após cadastro (opcional)
-    jNomeCad.setText("");
-    jTEnderecocad.setText("");
-    jTcpf.setText("");
-    jTemail.setText("");
-    jTdatadenascimento.setText("");
-});
+            } catch (ParseException e2) {
+                // Tratar erro de conversão
+                System.out.println("Erro ao converter a data: " + e2.getMessage());
+            }
+
+            // Exibir informações (pode ser substituído por salvar no banco ou outra funcionalidade)
+//            System.out.println(cliente.toString());
+            // Limpar os campos após cadastro (opcional)
+            jNomeCad.setText("");
+            jTEnderecocad.setText("");
+            jTcpf.setText("");
+            jTemail.setText("");
+            jTdatadenascimento.setText("");
+        });
     }//GEN-LAST:event_jBcadastrarActionPerformed
 
     /**

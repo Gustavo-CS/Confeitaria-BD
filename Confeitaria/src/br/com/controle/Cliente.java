@@ -5,13 +5,14 @@
 package br.com.controle;
 
 import java.util.Date;
+
 /**
  *
  * @author gustavo.santos2023
  */
 
 public class Cliente {
-    
+
     private int id;                     // Identificador único do cliente
     private String nome;                // Nome completo do cliente
     private String email;               // E-mail do cliente
@@ -20,8 +21,16 @@ public class Cliente {
     private Date dataNascimento;        // Data de nascimento do cliente
     private String cpf;                 // CPF do cliente
 
-    public Cliente(String nome, String endereco, String telefone, String cpf, String email, String dataNascimento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Cliente() {
+    }
+
+    public Cliente(String nome, String endereco, String telefone, String cpf, String email, Date dataNascimento) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.cpf = cpf;
+        this.email = email;
+        this.dataNascimento = dataNascimento;
     }
 
     public int getId() {
@@ -83,8 +92,8 @@ public class Cliente {
     // Método toString para exibir os dados do cliente de forma amigável
     @Override
     public String toString() {
-        return "Cliente{id=" + id + ", nome='" + nome + "', email='" + email + "', telefone='" + telefone + 
-               "', endereco='" + endereco + "', dataNascimento=" + dataNascimento + ", cpf='" + cpf + 
-               "', dataCadastro=" + "'}";
+        return "Cliente{id=" + id + ", nome='" + nome + "', email='" + email + "', telefone='" + telefone
+                + "', endereco='" + endereco + "', dataNascimento=" + dataNascimento + ", cpf='" + cpf
+                + "', dataCadastro=" + "'}";
     }
 }
