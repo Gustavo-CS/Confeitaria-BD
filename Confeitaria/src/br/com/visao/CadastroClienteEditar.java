@@ -10,12 +10,12 @@ import br.com.controle.Cliente;
  *
  * @author juan.fiuza
  */
-public class CadastroCliente extends javax.swing.JFrame {
+public class CadastroClienteEditar extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastroCliente
      */
-    public CadastroCliente() {
+    public CadastroClienteEditar() {
         initComponents();
     }
 
@@ -74,7 +74,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText("Cadastro de Clientes:");
+        jLabel2.setText("Cadastro de Clientes: Editar Cadastro");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Nome:");
@@ -114,7 +114,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jTtelefoneCad.setColumns(20);
 
         jBcadastrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jBcadastrar.setText("Cadastrar");
+        jBcadastrar.setText("Recadastrar");
         jBcadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBcadastrarActionPerformed(evt);
@@ -251,20 +251,23 @@ public class CadastroCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroCliente().setVisible(true);
+                new CadastroClienteEditar().setVisible(true);
             }
         });
     }
