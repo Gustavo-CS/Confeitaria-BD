@@ -4,6 +4,9 @@
  */
 package br.com.visao;
 
+import br.com.controle.Cliente;
+import br.com.entidade.CRUDCliente;
+
 /**
  *
  * @author juan.fiuza
@@ -32,6 +35,7 @@ public class TelaReadCadastro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +79,14 @@ public class TelaReadCadastro extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,6 +100,10 @@ public class TelaReadCadastro extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,12 +113,58 @@ public class TelaReadCadastro extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(10, 10, 10)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            CRUDCliente c = new CRUDCliente();
+            Cliente cliente = c.ler(clienteId); // Busca o cliente pelo ID
+            if (cliente != null) {
+                // Criar o modelo da tabela com as colunas
+                String[] colunas = {"ID", "Nome", "Email", "Telefone", "Endereço", "Data Nascimento", "CPF"};
+
+                // Cria o modelo da tabela
+                DefaultTableModel model = new DefaultTableModel(null, colunas);
+
+                // Cria uma linha de dados com os valores do cliente
+                Object[] dadosCliente = {
+                    cliente.getId(),
+                    cliente.getNome(),
+                    cliente.getEmail(),
+                    cliente.getTelefone(),
+                    cliente.getEndereco(),
+                    cliente.getDataNascimento(),
+                    cliente.getCpf()
+                };
+
+                // Adiciona a linha ao modelo
+                model.addRow(dadosCliente);
+
+                // Criar a tabela e adicionar ao JScrollPane
+                JTable table = new JTable(model);
+                JScrollPane scrollPane = new JScrollPane(table);
+
+                // Criar o JFrame para exibir a tabela
+                JFrame frame = new JFrame("Tabela de Clientes");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(800, 300);
+                frame.add(scrollPane, BorderLayout.CENTER); // Adiciona a tabela no JFrame
+                frame.setVisible(true);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao preencher a tabela: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,6 +202,7 @@ public class TelaReadCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
