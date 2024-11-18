@@ -143,12 +143,10 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
         p.setNome(jTnome.getText());
         p.setPreco_grama(Double.valueOf(jTpreco.getText()));
         try {
-            dao.inserir(a);
             jTnome.setText("");
-            jTemail.setText("");
             jTnome.requestFocus();
         } catch (Exception ex) {
-            Logger.getLogger(FormCadastro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FormProdutoCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jTnomeActionPerformed
 
