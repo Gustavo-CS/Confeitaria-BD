@@ -53,7 +53,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 181, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
 
         jLabel1.setFont(new java.awt.Font("Monotype Corsiva", 1, 54)); // NOI18N

@@ -63,7 +63,7 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setText("Cadastrar");
 
-        jPanel1.setBackground(new java.awt.Color(255, 181, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
 
         jLabel4.setFont(new java.awt.Font("Monotype Corsiva", 1, 54)); // NOI18N
