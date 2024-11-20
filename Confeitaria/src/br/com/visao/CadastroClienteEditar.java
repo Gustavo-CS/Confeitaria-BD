@@ -9,6 +9,7 @@ import br.com.entidade.CRUDCliente;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,6 +51,7 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
         jTtelefoneCad = new javax.swing.JTextField();
         jBcadastrar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -140,6 +142,8 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
 
         jLabel9.setText("Dados a serem alterados: (preencher apenas os dados a serem alterados)");
 
+        jLabel10.setText("ex:(01/01/2001)");
+
         jMenu1.setText("Clientes");
 
         jMenuItem1.setText("Cadastrar cliente");
@@ -227,16 +231,6 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBcadastrar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTemail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTdatadenascimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTtelefoneCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -255,7 +249,19 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel7)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBcadastrar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTemail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTdatadenascimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
@@ -296,9 +302,11 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTdatadenascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addGap(4, 4, 4)
                 .addComponent(jBcadastrar)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -318,42 +326,52 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
         String email = jTemail.getText();
         String dataNascimento = jTdatadenascimento.getText();
 
-        try {
-            CRUDCliente c = new CRUDCliente();
-            Cliente cliente = c.ler(cpf);
+        if (!nome.isEmpty() || !endereco.isEmpty() || !telefone.isEmpty() || !cpf.isEmpty() || !email.isEmpty() || !dataNascimento.isEmpty()) {
             try {
+                CRUDCliente c = new CRUDCliente();
+                Cliente cliente = c.ler(cpf);
+                if (cliente == null) {
+                    JOptionPane.showMessageDialog(null, "não existe cliente com o cfp informado");
+                } else {
 
-                if (!nome.isEmpty()) {
-                    cliente.setNome(nome);
-                }
-                if (!endereco.isEmpty()) {
-                    cliente.setEndereco(endereco);
-                }
-                if (!telefone.isEmpty()) {
-                    cliente.setTelefone(telefone);
-                }
-                if (!email.isEmpty()) {
-                    cliente.setEmail(email);
-                }
-                if (!dataNascimento.isEmpty()) {
-                    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                    Date data = formato.parse(dataNascimento);
-                    cliente.setDataNascimento(data);
+                    if (!nome.isEmpty()) {
+                        cliente.setNome(nome);
+                    }
+                    if (!endereco.isEmpty()) {
+                        cliente.setEndereco(endereco);
+                    }
+                    if (!telefone.isEmpty()) {
+                        cliente.setTelefone(telefone);
+                    }
+                    if (!email.isEmpty()) {
+                        cliente.setEmail(email);
+                    }
+                    if (!dataNascimento.isEmpty()) {
+                        try {
+                            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                            Date data = formato.parse(dataNascimento);
+                            cliente.setDataNascimento(data);
+                        } catch (ParseException e2) {
+                            JOptionPane.showMessageDialog(null, "data formatada errada");
+                        }
+                    }
+                    try {
+                        if (c.atualizar(cliente)) {
+                            JOptionPane.showMessageDialog(null, "cliente atualizado com sucesso");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "erro ao atualizar cliente");
+                        }
+                    } catch (Exception e1) {
+                        JOptionPane.showMessageDialog(null, "erro ao no sistema");
+                    }
+
                 }
 
-                try {
-                    c.atualizar(cliente);
-                } catch (Exception e1) {
-                    System.out.println("Erro ao inserir cliente no banco de dados: " + e1.getMessage());
-                }
-
-            } catch (ParseException e2) {
-                // Tratar erro de conversão
-                System.out.println("Erro ao converter a data: " + e2.getMessage());
+            } catch (Exception e3) {
+                JOptionPane.showMessageDialog(null, "erro ao no sistema");
             }
-        } catch (Exception e3) {
-            // Tratar erro de conversão
-            System.out.println("Cliente não encontrado: " + e3.getMessage());
+        } else {
+            JOptionPane.showMessageDialog(null, "preencha algum campo");
         }
 
         jNomeCad.setText("");
@@ -361,6 +379,7 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
         jTcpf.setText("");
         jTemail.setText("");
         jTdatadenascimento.setText("");
+        jTtelefoneCad.setText("");
     }//GEN-LAST:event_jBcadastrarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -446,6 +465,7 @@ public class CadastroClienteEditar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBcadastrar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -9,6 +9,7 @@ import br.com.entidade.CRUDCliente;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,6 +50,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTtelefoneCad = new javax.swing.JTextField();
         jBcadastrar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -136,6 +138,8 @@ public class CadastroCliente extends javax.swing.JFrame {
                 jBcadastrarActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("ex:(01/01/2001)");
 
         jMenu1.setText("Clientes");
 
@@ -228,9 +232,6 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addContainerGap(110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(279, 279, 279))
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel6)
@@ -240,7 +241,12 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTcpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTemail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTdatadenascimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jTdatadenascimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel7))
+                            .addGap(279, 279, 279)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel8)
@@ -288,7 +294,9 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTdatadenascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addGap(35, 35, 35)
                 .addComponent(jBcadastrar))
         );
 
@@ -302,42 +310,49 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     private void jBcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcadastrarActionPerformed
         // TODO add your handling code here:
-        jBcadastrar.addActionListener(e -> {
-            // Coletar os valores dos campos
-            String nome = jNomeCad.getText();
-            String endereco = jTEnderecocad.getText();
-            String telefone = jTtelefoneCad.getText();
-            String cpf = jTcpf.getText();
-            String email = jTemail.getText();
-//    String dataNascimento = jTdatadenascimento.getText();
+        // Coletar os valores dos campos
+        String nome = jNomeCad.getText();
+        String endereco = jTEnderecocad.getText();
+        String telefone = jTtelefoneCad.getText();
+        String cpf = jTcpf.getText();
+        String email = jTemail.getText();
+        String dataNascimento = jTdatadenascimento.getText();
 
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
+        if (!nome.isEmpty() && !endereco.isEmpty() && !telefone.isEmpty() && !cpf.isEmpty() && !email.isEmpty() && !dataNascimento.isEmpty()) {
             try {
                 // Converter String para Date
-                Date data = formato.parse(jTdatadenascimento.getText());
+                Date data = formato.parse(dataNascimento);
                 // Criar objeto da classe Cliente
                 Cliente cliente = new Cliente(nome, endereco, telefone, cpf, email, data);
                 CRUDCliente c = new CRUDCliente();
+
                 try {
-                    c.inserir(cliente);
+                    if (c.inserir(cliente)) {
+                        JOptionPane.showMessageDialog(null, "cliente cadastrado com sucesso");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "erro ao cadastrar cliente");
+                    }
                 } catch (Exception e1) {
-                    System.out.println("Erro ao inserir cliente no banco de dados: " + e1.getMessage());
+                    JOptionPane.showMessageDialog(null, "erro ao no sistema");
                 }
 
             } catch (ParseException e2) {
                 // Tratar erro de conversão
-                System.out.println("Erro ao converter a data: " + e2.getMessage());
+                JOptionPane.showMessageDialog(null, "data formatada errada");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "preencha todos os campos");
+        }
 
-            // Limpar os campos após cadastro (opcional)
-            jNomeCad.setText("");
-            jTEnderecocad.setText("");
-            jTcpf.setText("");
-            jTemail.setText("");
-            jTdatadenascimento.setText("");
-            jTtelefoneCad.setText("");
-        });
+        // Limpar os campos após cadastro (opcional)
+        jNomeCad.setText("");
+        jTEnderecocad.setText("");
+        jTcpf.setText("");
+        jTemail.setText("");
+        jTdatadenascimento.setText("");
+        jTtelefoneCad.setText("");
     }//GEN-LAST:event_jBcadastrarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -427,6 +442,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

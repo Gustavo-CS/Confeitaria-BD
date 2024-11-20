@@ -28,7 +28,7 @@ public class CRUDCliente extends DAO {
 //            System.out.println("Erro " + e.getMessage());
 //        }
 //    }
-    public void inserir(Cliente cliente) throws Exception {
+    public boolean inserir(Cliente cliente) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
             String query = "INSERT INTO clientes (nome, email, telefone, endereco, data_nascimento, cpf) VALUES (?, ?, ?, ?, ?, ?)";
@@ -52,9 +52,10 @@ public class CRUDCliente extends DAO {
             System.out.println("\n" + id);
             System.out.println("\n" + cliente.getId());
             fecharBanco(); // Método para fechar a conexão com o banco
+            return true;
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
-            throw e; // Relança a exceção para tratamento externo
+            return false;
         }
     }
 
@@ -115,7 +116,7 @@ public class CRUDCliente extends DAO {
         return clienteList;
     }
 
-    public void atualizar(Cliente cliente) throws Exception {
+    public boolean atualizar(Cliente cliente) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
             String query = "UPDATE clientes SET nome = ?, email = ?, telefone = ?, endereco = ?, "
@@ -140,13 +141,14 @@ public class CRUDCliente extends DAO {
             }
 
             fecharBanco(); // Método para fechar a conexão com o banco
+            return true;
         } catch (Exception e) {
             System.out.println("Erro ao atualizar cliente: " + e.getMessage());
-            throw e; // Relança a exceção para tratamento externo
+            return false;
         }
     }
 
-    public void deletar(String cpf) throws Exception {
+    public boolean deletar(String cpf) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
             String query = "DELETE FROM clientes WHERE cpf = ?";
@@ -163,9 +165,10 @@ public class CRUDCliente extends DAO {
             }
 
             fecharBanco(); // Método para fechar a conexão com o banco
+            return true;
         } catch (Exception e) {
             System.out.println("Erro ao deletar cliente: " + e.getMessage());
-            throw e; // Relança a exceção para tratamento externo
+            return false;
         }
     }
 }

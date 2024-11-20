@@ -7,6 +7,7 @@ package br.com.visao;
 import br.com.controle.Cliente;
 import br.com.entidade.CRUDCliente;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -224,14 +225,18 @@ public class TelaReadCliente extends javax.swing.JFrame {
             alunopesque.setRowCount(0);
             {
                 ArrayList<Cliente> clientes = crud.lerTodos();
-                for (int i = 0; i < clientes.size(); i++) {
-                    c = clientes.get(i);
-                    alunopesque.addRow(new Object[]{c.getNome(), c.getEndereco(), c.getTelefone(), c.getCpf(), c.getEmail(), c.getDataNascimento()});
-                    System.out.println("c" + c.getId() + c.getNome() + c.getEmail() + c.getTelefone() + c.getEndereco() + c.getDataNascimento() + c.getCpf());
+                if (clientes.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "nenhum cliente encontrado");
+                } else {
+                    for (int i = 0; i < clientes.size(); i++) {
+                        c = clientes.get(i);
+                        alunopesque.addRow(new Object[]{c.getNome(), c.getEndereco(), c.getTelefone(), c.getCpf(), c.getEmail(), c.getDataNascimento()});
+                    }
                 }
+
             }
         } catch (Exception e) {
-            System.out.println("Erro " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "erro ao no sistema");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

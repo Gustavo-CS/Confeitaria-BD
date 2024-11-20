@@ -35,7 +35,7 @@ public class TeladeDeletarCliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTCPF = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -183,7 +183,7 @@ public class TeladeDeletarCliente extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
@@ -201,7 +201,7 @@ public class TeladeDeletarCliente extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(46, 46, 46)
                 .addComponent(jButton1)
@@ -215,12 +215,23 @@ public class TeladeDeletarCliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String cpf = jTCPF.getText();
         CRUDCliente c = new CRUDCliente();
-        try {
-            c.deletar(jTextField1.getText());
-        } catch (Exception e) {
-            System.out.println("Erro ao deletar cliente: " + e.getMessage());
+        if (!cpf.isEmpty()) {
+            try {
+                if (c.deletar(jTCPF.getText())) {
+                    JOptionPane.showMessageDialog(null, "cliente deletado com sucesso");
+                } else {
+                    JOptionPane.showMessageDialog(null, "erro ao deletar cliente");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "erro ao no sistema");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "preencha o cpf do cliente a ser deletado");
         }
+
+        jTCPF.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -320,6 +331,6 @@ public class TeladeDeletarCliente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTCPF;
     // End of variables declaration//GEN-END:variables
 }
