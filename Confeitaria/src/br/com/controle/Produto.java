@@ -11,9 +11,7 @@ package br.com.controle;
 public class Produto {
     private int id;
     private String nome;
-    private double preco_grama;
-    private double peso;
-    private double preco_final;
+    private double preco;
 
     public int getId() {
         return id;
@@ -31,28 +29,13 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getPreco_grama() {
-        return preco_grama;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setPreco_grama(double preco_grama) {
-        this.preco_grama = preco_grama;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-    public double getPreco_final() {
-        return preco_final;
-    }
-
-    public void setPreco_final(double preco_final) {
-        this.preco_final = preco_final;
-    }
     
 }
