@@ -6,6 +6,8 @@ package br.com.visao;
 
 import br.com.controle.Cliente;
 import br.com.entidade.CRUDCliente;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -127,42 +129,20 @@ public class TelaReadCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         try {
-            CRUDCliente c = new CRUDCliente();
-            Cliente cliente = c.ler(clienteId); // Busca o cliente pelo ID
-            if (cliente != null) {
-                // Criar o modelo da tabela com as colunas
-                String[] colunas = {"ID", "Nome", "Email", "Telefone", "Endereço", "Data Nascimento", "CPF"};
-
-                // Cria o modelo da tabela
-                DefaultTableModel model = new DefaultTableModel(null, colunas);
-
-                // Cria uma linha de dados com os valores do cliente
-                Object[] dadosCliente = {
-                    cliente.getId(),
-                    cliente.getNome(),
-                    cliente.getEmail(),
-                    cliente.getTelefone(),
-                    cliente.getEndereco(),
-                    cliente.getDataNascimento(),
-                    cliente.getCpf()
-                };
-
-                // Adiciona a linha ao modelo
-                model.addRow(dadosCliente);
-
-                // Criar a tabela e adicionar ao JScrollPane
-                JTable table = new JTable(model);
-                JScrollPane scrollPane = new JScrollPane(table);
-
-                // Criar o JFrame para exibir a tabela
-                JFrame frame = new JFrame("Tabela de Clientes");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(800, 300);
-                frame.add(scrollPane, BorderLayout.CENTER); // Adiciona a tabela no JFrame
-                frame.setVisible(true);
+            Cliente c = new Cliente();
+            CRUDCliente crud = new CRUDCliente();
+            DefaultTableModel alunopesque = (DefaultTableModel) jTable1.getModel();
+            alunopesque.setRowCount(0);
+            {
+                ArrayList<Cliente> clientes = crud.ler();
+                for (int i = 0; i < clientes.size(); i++) {
+                    c = clientes.get(i);
+                    alunopesque.addRow(new Object[]{c.getNome(), c.getEndereco(), c.getTelefone(), c.getCpf(), c.getEmail(), c.getDataNascimento()});
+                    System.out.println("c" + c.getId() + c.getNome() + c.getEmail() + c.getTelefone() + c.getEndereco() + c.getDataNascimento() + c.getCpf());
+                }
             }
         } catch (Exception e) {
-            System.out.println("Erro ao preencher a tabela: " + e.getMessage());
+            System.out.println("Erro " + e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -7,6 +7,7 @@ package br.com.entidade;
 import br.com.controle.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,8 +49,8 @@ public class CRUDCliente extends DAO {
             tr.next();
             int id = tr.getInt("id");
             cliente.setId(id);
-            System.out.println("\n"+id);
-            System.out.println("\n"+cliente.getId());
+            System.out.println("\n" + id);
+            System.out.println("\n" + cliente.getId());
             fecharBanco(); // Método para fechar a conexão com o banco
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
@@ -57,17 +58,45 @@ public class CRUDCliente extends DAO {
         }
     }
 
-    public Cliente ler(int id) throws Exception {
-        Cliente cliente = null; // Objeto para armazenar o cliente retornado
+//    public Cliente ler(int id) throws Exception {
+//        Cliente cliente = null; // Objeto para armazenar o cliente retornado
+//        try {
+//            abrirBanco(); // Método para abrir a conexão com o banco
+//            String query = "SELECT * FROM clientes WHERE id = ?";
+//            pst = (PreparedStatement) con.prepareStatement(query);
+//            pst.setInt(1, id); // Define o ID do cliente a ser buscado
+//
+//            rs = pst.executeQuery(); // Executa a consulta SQL
+//
+//            if (rs.next()) {
+//                cliente = new Cliente();
+//                cliente.setId(rs.getInt("id"));
+//                cliente.setNome(rs.getString("nome"));
+//                cliente.setEmail(rs.getString("email"));
+//                cliente.setTelefone(rs.getString("telefone"));
+//                cliente.setEndereco(rs.getString("endereco"));
+//                cliente.setDataNascimento(rs.getDate("data_nascimento"));
+//                cliente.setCpf(rs.getString("cpf"));
+//            } else {
+//                System.out.println("Nenhum cliente encontrado com o ID informado.");
+//            }
+//
+//            fecharBanco(); // Método para fechar a conexão com o banco
+//        } catch (Exception e) {
+//            System.out.println("Erro ao buscar cliente: " + e.getMessage());
+//            throw e; // Relança a exceção para tratamento externo
+//        }
+//        return cliente; // Retorna o cliente encontrado ou null
+//    }
+    public ArrayList<Cliente> ler() throws Exception {
+        ArrayList<Cliente> clienteList = new ArrayList<Cliente>();
         try {
-            abrirBanco(); // Método para abrir a conexão com o banco
-            String query = "SELECT * FROM clientes WHERE id = ?";
+            abrirBanco();
+            String query = "select * FROM clientes order by id";
             pst = (PreparedStatement) con.prepareStatement(query);
-            pst.setInt(1, id); // Define o ID do cliente a ser buscado
-
-            rs = pst.executeQuery(); // Executa a consulta SQL
-
-            if (rs.next()) {
+            ResultSet rs = pst.executeQuery();
+            Cliente cliente;
+            while (rs.next()) {
                 cliente = new Cliente();
                 cliente.setId(rs.getInt("id"));
                 cliente.setNome(rs.getString("nome"));
@@ -76,16 +105,13 @@ public class CRUDCliente extends DAO {
                 cliente.setEndereco(rs.getString("endereco"));
                 cliente.setDataNascimento(rs.getDate("data_nascimento"));
                 cliente.setCpf(rs.getString("cpf"));
-            } else {
-                System.out.println("Nenhum cliente encontrado com o ID informado.");
+                clienteList.add(cliente);
             }
-
-            fecharBanco(); // Método para fechar a conexão com o banco
+            fecharBanco();
         } catch (Exception e) {
-            System.out.println("Erro ao buscar cliente: " + e.getMessage());
-            throw e; // Relança a exceção para tratamento externo
+            System.out.println("Erro " + e.getMessage());
         }
-        return cliente; // Retorna o cliente encontrado ou null
+        return clienteList;
     }
 
     public void atualizar(Cliente cliente) throws Exception {
@@ -101,7 +127,7 @@ public class CRUDCliente extends DAO {
             pst.setString(4, cliente.getEndereco());
             pst.setDate(5, new java.sql.Date(cliente.getDataNascimento().getTime()));
             pst.setString(6, cliente.getCpf());
-            System.out.println(""+cliente.getId());
+            System.out.println("" + cliente.getId());
             pst.setInt(7, cliente.getId()); // Identifica o cliente pelo ID
 
             int linhasAfetadas = pst.executeUpdate(); // Executa a atualização
@@ -119,13 +145,13 @@ public class CRUDCliente extends DAO {
         }
     }
 
-    public void deletar(int id) throws Exception {
+    public void deletar(String cpf) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
-            String query = "DELETE FROM clientes WHERE id = ?";
+            String query = "DELETE FROM clientes WHERE cpf = ?";
             pst = (PreparedStatement) con.prepareStatement(query);
 
-            pst.setInt(1, id); // Define o ID do cliente a ser excluído
+            pst.setString(1, cpf); // Define o ID do cliente a ser excluído
 
             int linhasAfetadas = pst.executeUpdate(); // Executa o comando SQL
 
