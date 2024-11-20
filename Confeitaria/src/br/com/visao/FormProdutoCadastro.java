@@ -175,7 +175,7 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
         // Criar objeto Produto e definir seus atributos
         Produto produto = new Produto();
         produto.setNome(nome);
-        produto.setPreco_grama(preco);
+        produto.setPreco(preco);
         
 
         // Criar instancia de ManterProduto para manipulação do banco de dados
