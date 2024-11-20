@@ -129,7 +129,7 @@ public class TelaDeletarProduto extends javax.swing.JFrame {
         ManterProduto m = new ManterProduto();
         if (!nome.isEmpty()) {
             try {
-                if (m.deletar(jTNomeDeletar.getText())) {
+                if (!m.excluir(Integer.parseInt(jTNomeDeletar.getText()))) {
                     JOptionPane.showMessageDialog(null, "Produto deletado com sucesso");
                 } else {
                     JOptionPane.showMessageDialog(null, "Erro ao deletar produto");
@@ -140,9 +140,8 @@ public class TelaDeletarProduto extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Escreva o nome do produto a ser deletado");
         }
-
-        jTNomeDeletar.setText("");
-    }                    
+        
+        jTNomeDeletar.setText("");        
     }//GEN-LAST:event_jBDeletarActionPerformed
 
     /**
