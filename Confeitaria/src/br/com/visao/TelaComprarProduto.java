@@ -69,6 +69,8 @@ public class TelaComprarProduto extends javax.swing.JFrame {
         jCCliente = new javax.swing.JComboBox<>();
         jCProduto = new javax.swing.JComboBox<>();
         jBComprar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTQuantidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,20 +85,30 @@ public class TelaComprarProduto extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Quantidade");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jCCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                .addComponent(jCProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(156, 156, 156)
                 .addComponent(jBComprar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addComponent(jCProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jTQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,9 +117,13 @@ public class TelaComprarProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addComponent(jBComprar)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,26 +131,27 @@ public class TelaComprarProduto extends javax.swing.JFrame {
 
     private void jBComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprarActionPerformed
         // TODO add your handling code here:
-         int indiceCliente = jCCliente.getSelectedIndex(); // Obtém o índice selecionado do JComboBox de clientes
-         int indiceProduto = jCProduto.getSelectedIndex(); // Obtém o índice selecionado do JComboBox de produtos
+         int indiceCliente = jCCliente.getSelectedIndex(); 
+    int indiceProduto = jCProduto.getSelectedIndex(); 
 
-    
-
-    // obtem os objetos Cliente e Produto selecionados
+    // Obtém os objetos Cliente e Produto selecionados
     Cliente clienteSelecionado = clientes.get(indiceCliente);
     Produto produtoSelecionado = produtos.get(indiceProduto);
 
+    // Captura a quantidade inserida pelo usuário
+    int quantidade = Integer.parseInt(jTQuantidade.getText());
+
     // Registro da compra no banco
     DAOCompra daoCompra = new DAOCompra();
-    boolean sucesso = daoCompra.registrarCompra(clienteSelecionado.getId(), produtoSelecionado.getId());
+    boolean sucesso = daoCompra.registrarCompra(clienteSelecionado.getId(), produtoSelecionado.getId(), quantidade);
 
     // Exibe mensagens de feedback para o usuário
     if (sucesso) {
         JOptionPane.showMessageDialog(this, 
-            """
-            Compra realizada com sucesso! 
-            Cliente: """ + clienteSelecionado.getNome() + "\n" +
-            "Produto: " + produtoSelecionado.getNome()); 
+            "Compra realizada com sucesso!\n" +
+            "Cliente: " + clienteSelecionado.getNome() + "\n" +
+            "Produto: " + produtoSelecionado.getNome() + "\n" +
+            "Quantidade: " + quantidade); 
     } else {
         JOptionPane.showMessageDialog(this, "Erro ao registrar a compra. Tente novamente.");
     }
@@ -179,5 +196,7 @@ public class TelaComprarProduto extends javax.swing.JFrame {
     private javax.swing.JButton jBComprar;
     private javax.swing.JComboBox<String> jCCliente;
     private javax.swing.JComboBox<String> jCProduto;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTQuantidade;
     // End of variables declaration//GEN-END:variables
 }
