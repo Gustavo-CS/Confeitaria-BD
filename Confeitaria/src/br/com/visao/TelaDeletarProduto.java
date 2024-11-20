@@ -141,8 +141,7 @@ public class TelaDeletarProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Escreva o nome do produto a ser deletado");
         }
 
-        jTNomeDeletar.setText("");
-    }                    
+        jTNomeDeletar.setText(""); 
     }//GEN-LAST:event_jBDeletarActionPerformed
 
     /**
