@@ -86,7 +86,7 @@ public class ManterProduto extends DAO {
     }
 
     // Método para excluir um produto pelo ID
-    public void excluir(int id) throws Exception {
+    public boolean excluir(int id) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
             String query = "DELETE FROM produtos_confeitaria WHERE id = ?";
@@ -102,9 +102,10 @@ public class ManterProduto extends DAO {
             }
 
             fecharBanco(); // Método para fechar a conexão com o banco
+            return true;
         } catch (Exception e) {
             System.out.println("Erro ao excluir produto: " + e.getMessage());
-            throw e; // Relança a exceção para tratamento externo
+            return false;
         }
     }
 }
