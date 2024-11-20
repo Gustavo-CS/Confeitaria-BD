@@ -49,12 +49,20 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTtelefoneCad = new javax.swing.JTextField();
         jBcadastrar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 255));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Monotype Corsiva", 1, 54)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,6 +132,35 @@ public class CadastroCliente extends javax.swing.JFrame {
                 jBcadastrarActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("Clientes");
+
+        jMenuItem1.setText("Cadastrar cliente");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Atualizar cliente");
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Buscar clientes");
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Deletar cliente");
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Produtos");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Compras");
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,8 +237,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(jTdatadenascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
-                .addComponent(jBcadastrar)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addComponent(jBcadastrar))
         );
 
         pack();
@@ -252,6 +288,10 @@ public class CadastroCliente extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jBcadastrarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -297,6 +337,14 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JTextField jNomeCad;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
