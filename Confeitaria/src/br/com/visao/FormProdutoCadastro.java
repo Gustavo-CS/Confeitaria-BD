@@ -5,8 +5,8 @@
 package br.com.visao;
 
 import br.com.controle.Produto;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import br.com.entidade.ManterProduto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,10 +35,12 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
         jTpreco = new javax.swing.JTextField();
         jTnome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jBCadastrar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTPeso = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,11 +62,8 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel3.setText("Cadastro de produto");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setText("Cadastrar");
-
         jPanel1.setBackground(new java.awt.Color(153, 0, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setFont(new java.awt.Font("Monotype Corsiva", 1, 54)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,31 +86,48 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        jBCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jBCadastrar.setText("CADASTRAR");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("Peso: ");
+
+        jTPeso.setColumns(10);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jSeparator1)
+                .addGap(216, 216, 216))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(126, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(171, 171, 171))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel5))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTnome, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTpreco, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(119, 119, 119))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(171, 171, 171))))
+                            .addComponent(jTpreco, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(102, 102, 102))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(235, 235, 235)
+                .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,17 +137,24 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(9, 9, 9)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTpreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(24, 24, 24)
+                    .addComponent(jLabel2)
+                    .addComponent(jTpreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(30, 30, 30)
-                .addComponent(jButton1)
-                .addGap(40, 40, 40))
+                    .addComponent(jLabel5)
+                    .addComponent(jTPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -139,16 +162,63 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
 
     private void jTnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnomeActionPerformed
         // TODO add your handling code here:
-        Produto p = new Produto();
-        p.setNome(jTnome.getText());
-        p.setPreco_grama(Double.valueOf(jTpreco.getText()));
-        try {
-            jTnome.setText("");
-            jTnome.requestFocus();
-        } catch (Exception ex) {
-            Logger.getLogger(FormProdutoCadastro.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_jTnomeActionPerformed
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        // TODO add your handling code here:
+    jBCadastrar.addActionListener(e -> {
+    // Coletar os valores dos campos
+    String nome = jTnome.getText();
+    String precoTexto = jTpreco.getText();
+    String pesoTexto = jTPeso.getText();
+
+    try {
+        
+        if (nome.isEmpty() || precoTexto.isEmpty() || pesoTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos!");
+            return;
+        }
+
+        // Converter o preço e peso para double
+        double preco = Double.parseDouble(precoTexto);
+        double peso = Double.parseDouble(pesoTexto);
+
+        
+        double precoTotal = preco * peso;
+
+        // Criar objeto Produto e definir seus atributos
+        Produto produto = new Produto();
+        produto.setNome(nome);
+        produto.setPreco_grama(preco);
+        produto.setPeso(peso);  // Definir o peso
+        produto.setPreco_final(precoTotal);  // Definir o preço total
+
+        // Criar instancia de ManterProduto para manipulação do banco de dados
+        ManterProduto crudProduto = new ManterProduto();
+
+        try {
+            // Inserir produto no banco de dados
+            crudProduto.inserir(produto);
+            JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!");
+        } catch (Exception e1) {
+            // Tratar erro de inserção no banco de dados
+            System.out.println("Erro ao inserir produto no banco de dados: " + e1.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar o produto.");
+        }
+
+    } catch (NumberFormatException e2) {
+        // Tratar erro de conversão de preço ou peso para double
+        System.out.println("Erro ao converter preço ou peso: " + e2.getMessage());
+        JOptionPane.showMessageDialog(this, "Preço ou peso inválido! Por favor, insira números válidos.");
+    }
+
+    // Limpar os campos após cadastro (opcional)
+    jTnome.setText("");
+    jTpreco.setText("");
+    jTPeso.setText("");
+});
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,13 +256,15 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBCadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTPeso;
     private javax.swing.JTextField jTnome;
     private javax.swing.JTextField jTpreco;
     // End of variables declaration//GEN-END:variables
