@@ -19,11 +19,12 @@ public class ManterProduto extends DAO {
     public void inserir(Produto produto) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
-            String query = "INSERT INTO produtos_confeitaria (nome, preco) VALUES (?, ?)";
+            String query = "INSERT INTO produtos_confeitaria (nome, preco_final) VALUES (?, ?)";
             pst = con.prepareStatement(query);
 
             pst.setString(1, produto.getNome());
             pst.setDouble(2, produto.getPreco());
+
             pst.executeUpdate(); // Executa o comando SQL
 
             System.out.println("Produto inserido com sucesso!");
