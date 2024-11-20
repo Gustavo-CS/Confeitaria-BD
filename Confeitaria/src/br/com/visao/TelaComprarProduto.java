@@ -44,19 +44,18 @@ public class TelaComprarProduto extends javax.swing.JFrame {
         }
     }
       private void carregarProdutos() {
-        try {
-            ManterProduto manterProduto = new ManterProduto();
-            produtos = manterProduto.consultar(); // Obtém a lista de produtos do banco
-            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-            for (Produto produto : produtos) {
-                model.addElement(produto.getNome()); // Adiciona o nome do produto ao modelo do JComboBox
-            }
-            jCProduto.setModel(model); // Atualiza o JComboBox2 com os produtos
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar produtos: " + e.getMessage());
+         try {
+        ManterProduto manterProduto = new ManterProduto();
+        produtos = manterProduto.consultar(); // Obtém a lista de produtos do banco
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        for (Produto produto : produtos) {
+            model.addElement(produto.getNome()); // Adiciona o nome do produto ao modelo do JComboBox
         }
+        jCProduto.setModel(model); // Atualiza o JComboBox com os produtos
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro ao carregar produtos: " + e.getMessage());
     }
-
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -131,30 +130,51 @@ public class TelaComprarProduto extends javax.swing.JFrame {
 
     private void jBComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprarActionPerformed
         // TODO add your handling code here:
-         int indiceCliente = jCCliente.getSelectedIndex(); 
-    int indiceProduto = jCProduto.getSelectedIndex(); 
+    int indiceCliente = jCCliente.getSelectedIndex(); 
+int indiceProduto = jCProduto.getSelectedIndex(); 
 
-    // Obtém os objetos Cliente e Produto selecionados
-    Cliente clienteSelecionado = clientes.get(indiceCliente);
-    Produto produtoSelecionado = produtos.get(indiceProduto);
+// Verifica se um cliente foi selecionado
+if (indiceCliente < 0) {
+    JOptionPane.showMessageDialog(this, "Por favor, selecione um cliente.");
+    return; // Interrompe a execução se o cliente não for selecionado
+}
 
-    // Captura a quantidade inserida pelo usuário
-    int quantidade = Integer.parseInt(jTQuantidade.getText());
+// Verifica se um produto foi selecionado
+if (indiceProduto < 0) {
+    JOptionPane.showMessageDialog(this, "Por favor, selecione um produto.");
+    return; // Interrompe a execução se o produto não for selecionado
+}
 
-    // Registro da compra no banco
-    DAOCompra daoCompra = new DAOCompra();
-    boolean sucesso = daoCompra.registrarCompra(clienteSelecionado.getId(), produtoSelecionado.getId(), quantidade);
+// Obtém os objetos Cliente e Produto selecionados
+Cliente clienteSelecionado = clientes.get(indiceCliente);
+Produto produtoSelecionado = produtos.get(indiceProduto);
 
-    // Exibe mensagens de feedback para o usuário
-    if (sucesso) {
-        JOptionPane.showMessageDialog(this, 
-            "Compra realizada com sucesso!\n" +
-            "Cliente: " + clienteSelecionado.getNome() + "\n" +
-            "Produto: " + produtoSelecionado.getNome() + "\n" +
-            "Quantidade: " + quantidade); 
-    } else {
-        JOptionPane.showMessageDialog(this, "Erro ao registrar a compra. Tente novamente.");
+// Captura a quantidade inserida pelo usuário e verifica se é válida
+int quantidade = 1;
+try {
+    quantidade = Integer.parseInt(jTQuantidade.getText());
+    if (quantidade <= 0) {
+        throw new NumberFormatException("A quantidade deve ser maior que zero.");
     }
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this, "Por favor, insira uma quantidade válida.");
+    return; // Interrompe a execução se a quantidade for inválida
+}
+
+// Registro da compra no banco
+DAOCompra daoCompra = new DAOCompra();
+boolean sucesso = daoCompra.registrarCompra(clienteSelecionado.getId(), produtoSelecionado.getId(), quantidade);
+
+// Exibe mensagens de feedback para o usuário
+if (sucesso) {
+    JOptionPane.showMessageDialog(this, 
+        "Compra realizada com sucesso!\n" +
+        "Cliente: " + clienteSelecionado.getNome() + "\n" +
+        "Produto: " + produtoSelecionado.getNome() + "\n" +
+        "Quantidade: " + quantidade); 
+} else {
+    JOptionPane.showMessageDialog(this, "Erro ao registrar a compra. Tente novamente.");
+}
     }//GEN-LAST:event_jBComprarActionPerformed
 
     /**

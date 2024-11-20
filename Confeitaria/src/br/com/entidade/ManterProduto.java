@@ -36,29 +36,29 @@ public class ManterProduto extends DAO {
     }
 
     // Método para consultar todos os produtos
-    public ArrayList<Produto> consultar() throws Exception {
-        ArrayList<Produto> produtoList = new ArrayList<>();
-        try {
-            abrirBanco(); // Método para abrir a conexão com o banco
-            String query = "SELECT id, nome, preco FROM produtos_confeitaria";
-            pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
+  public ArrayList<Produto> consultar() throws Exception {
+    ArrayList<Produto> produtoList = new ArrayList<>();
+    try {
+        abrirBanco(); // Método para abrir a conexão com o banco
+        String query = "SELECT id, nome, preco_final FROM produtos_confeitaria";
+        pst = con.prepareStatement(query);
+        ResultSet rs = pst.executeQuery();
 
-            while (rs.next()) {
-                Produto produto = new Produto();
-                produto.setId(rs.getInt("id"));
-                produto.setNome(rs.getString("nome"));
-                produto.setPreco(rs.getDouble("preco"));
-                produtoList.add(produto);
-            }
-
-            fecharBanco(); // Método para fechar a conexão com o banco
-        } catch (Exception e) {
-            System.out.println("Erro ao consultar produtos: " + e.getMessage());
-            throw e; // Relança a exceção para tratamento externo
+        while (rs.next()) {
+            Produto produto = new Produto();
+            produto.setId(rs.getInt("id"));
+            produto.setNome(rs.getString("nome"));
+            produto.setPreco(rs.getDouble("preco_final")); // Corrigido para preco_final
+            produtoList.add(produto);
         }
-        return produtoList; // Retorna a lista de produtos encontrados
+
+        fecharBanco(); // Método para fechar a conexão com o banco
+    } catch (Exception e) {
+        System.out.println("Erro ao consultar produtos: " + e.getMessage());
+        throw e; // Relança a exceção para tratamento externo
     }
+    return produtoList; // Retorna a lista de produtos encontrados
+}
 
     // Método para atualizar os dados de um produto
     public void atualizar(Produto produto) throws Exception {
