@@ -22,23 +22,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `produtos_confeitaria` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
-  `preco_por_grama` decimal(10,2) NOT NULL,
-  `peso` decimal(10,2) NOT NULL,
-  `preco_final` decimal(10,2) GENERATED ALWAYS AS (`preco_por_grama` * `peso`) STORED
+  `preco DOUBLE NOT NULL,
+  PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
-INSERT INTO `produtos_confeitaria` (`id`, `nome`, `preco_por_grama`, `peso`) VALUES
-(1, 'Bolo de chocolate ', 20.00, 0.50);
-
--- índices de tabela `produtos_confeitaria`
-
-ALTER TABLE `produtos_confeitaria`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `produtos_confeitaria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

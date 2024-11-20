@@ -19,11 +19,19 @@ public class ManterProduto extends DAO {
     public void inserir(Produto produto) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
+<<<<<<< HEAD
             String query = "INSERT INTO produtos_confeitaria (nome, preco_final) VALUES (?, ?)";
             pst = con.prepareStatement(query);
 
             pst.setString(1, produto.getNome());
             pst.setDouble(2, produto.getPreco_grama());
+=======
+            String query = "INSERT INTO produtos_confeitaria (nome, preco) VALUES (?, ?)";
+            pst = con.prepareStatement(query);
+
+            pst.setString(1, produto.getNome());
+            pst.setDouble(2, produto.getPreco());
+>>>>>>> 91ce986cde8e5eb6581a0ca4ad65221bd55da812
             pst.executeUpdate(); // Executa o comando SQL
 
             System.out.println("Produto inserido com sucesso!");
@@ -39,7 +47,7 @@ public class ManterProduto extends DAO {
         ArrayList<Produto> produtoList = new ArrayList<>();
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
-            String query = "SELECT id, nome, preco_por_grama, peso, preco_final FROM produtos_confeitaria";
+            String query = "SELECT id, nome, preco FROM produtos_confeitaria";
             pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
 
@@ -47,9 +55,7 @@ public class ManterProduto extends DAO {
                 Produto produto = new Produto();
                 produto.setId(rs.getInt("id"));
                 produto.setNome(rs.getString("nome"));
-                produto.setPreco_grama(rs.getDouble("preco_por_grama"));
-                produto.setPeso(rs.getDouble("peso"));
-                produto.setPreco_final(rs.getDouble("preco_final"));
+                produto.setPreco(rs.getDouble("preco"));
                 produtoList.add(produto);
             }
 
@@ -65,12 +71,11 @@ public class ManterProduto extends DAO {
     public void atualizar(Produto produto) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
-            String query = "UPDATE produtos_confeitaria SET nome = ?, preco_por_grama = ?, peso = ? WHERE id = ?";
+            String query = "UPDATE produtos_confeitaria SET nome = ?, preco = ? WHERE id = ?";
             pst = con.prepareStatement(query);
 
             pst.setString(1, produto.getNome());
-            pst.setDouble(2, produto.getPreco_grama());
-            pst.setDouble(3, produto.getPeso());
+            pst.setDouble(2, produto.getPreco());
             pst.setInt(4, produto.getId()); // Identifica o produto pelo ID
             int linhasAfetadas = pst.executeUpdate(); // Executa a atualização
 
