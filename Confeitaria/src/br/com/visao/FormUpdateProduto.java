@@ -312,40 +312,59 @@ public class FormUpdateProduto extends javax.swing.JFrame {
         String sId = jTid.getText();
         String nome = jTnome.getText();
         String sPreco = jTpreco.getText();
-        if (!sId.isEmpty() || !nome.isEmpty()|| sPreco.isEmpty()) {
-            int id = Integer.valueOf(sId);
-            try {
-            ManterProduto mp = new ManterProduto();
-            Produto p = mp.consultarInd(id);
-            if (p == null) {
-                    JOptionPane.showMessageDialog(null, "não existe produto com o id informado");
-                } else {
-                    p.setId(Integer.valueOf(jTid.getText()));
+        if (!sId.isEmpty()) {
+            if (!nome.isEmpty() || !sPreco.isEmpty()) {
+                int id = Integer.valueOf(sId);
+                try {
+                    ManterProduto mp = new ManterProduto();
+                    Produto p = mp.consultarInd(id);
+                    if (p == null) {
+                        JOptionPane.showMessageDialog(null, "não existe produto com o id informado");
+                    } else {
+//                        p.setId(Integer.valueOf(jTid.getText()));
+//
+//                        p.setNome(jTnome.getText());
+//                        p.setPreco(Double.valueOf(sPreco));
+//                        mp.atualizar(p);
+//                        ManterProduto mp = new ManterProduto();
+//                        Produto p = mp.consultarInd(id);
 
-                    p.setNome(jTnome.getText());
-                    p.setPreco(Double.valueOf(sPreco));
-                    mp.atualizar(p);
-                }
-            } catch (Exception e) {
+                        if (!nome.isEmpty()) {
+                            p.setNome(nome);
+                        }
+
+                        if (!sPreco.isEmpty()) {
+                            p.setPreco(Double.parseDouble(sPreco));
+                        }
+                        mp.atualizar(p);
+                    }
+                } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Erro");
+                }
             }
+//            else {
+//                int id = Integer.valueOf(sId);
+//                try {
+//                    ManterProduto mp = new ManterProduto();
+//                    Produto p = mp.consultarInd(id);
+//
+//                    if (!nome.isEmpty()) {
+//                        p.setNome(nome);
+//                    }
+//
+//                    if (!sPreco.isEmpty()) {
+//                        p.setPreco(Double.valueOf(sPreco));
+//                    }
+//                } catch (Exception e) {
+//                    JOptionPane.showMessageDialog(null, "Erro");
+//                }
+//            }
         } else {
-            int id = Integer.valueOf(sId);
-            try {
-                ManterProduto mp = new ManterProduto();
-                Produto p = mp.consultarInd(id);
-                
-                if (!nome.isEmpty()) {
-                    p.setNome(nome);
-                }
-                
-                if (!sPreco.isEmpty()) {
-                    p.setPreco(Double.valueOf(sPreco));
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro");
-            }
+            JOptionPane.showMessageDialog(null, "insira o id");
         }
+        jTid.setText("");
+        jTnome.setText("");
+        jTpreco.setText("");
     }//GEN-LAST:event_jBatualizarActionPerformed
 
     private void jTprecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTprecoActionPerformed

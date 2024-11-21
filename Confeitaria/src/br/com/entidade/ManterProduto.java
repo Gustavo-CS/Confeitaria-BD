@@ -88,12 +88,12 @@ public class ManterProduto extends DAO {
     public void atualizar(Produto produto) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
-            String query = "UPDATE produtos_confeitaria SET nome = ?, preco = ? WHERE id = ?";
+            String query = "UPDATE produtos_confeitaria SET nome = ?, preco_final = ? WHERE id = ?";
             pst = con.prepareStatement(query);
 
             pst.setString(1, produto.getNome());
             pst.setDouble(2, produto.getPreco());
-            pst.setInt(4, produto.getId()); // Identifica o produto pelo ID
+            pst.setInt(3, produto.getId()); // Identifica o produto pelo ID
             int linhasAfetadas = pst.executeUpdate(); // Executa a atualização
 
             if (linhasAfetadas > 0) {
