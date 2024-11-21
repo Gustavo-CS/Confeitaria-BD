@@ -34,6 +34,30 @@ public class ManterProduto extends DAO {
             throw e; // Relança a exceção para tratamento externo
         }
     }
+    
+    public Produto consultarInd(int id) throws Exception {
+    Produto produto = null;
+    try {
+        abrirBanco(); // Método para abrir a conexão com o banco
+        String query = "SELECT id, nome, preco_final FROM produtos_confeitaria where id = ?";
+        pst = con.prepareStatement(query);
+        pst.setInt(1, id);
+        ResultSet rs = pst.executeQuery();
+
+        if (rs.next()) {
+            produto = new Produto();
+            produto.setId(rs.getInt("id"));
+            produto.setNome(rs.getString("nome"));
+            produto.setPreco(rs.getDouble("preco_final")); // Corrigido para preco_final
+        }
+
+        fecharBanco(); // Método para fechar a conexão com o banco
+    } catch (Exception e) {
+        System.out.println("Erro ao consultar produtos: " + e.getMessage());
+        throw e; // Relança a exceção para tratamento externo
+    }
+    return produto; // Retorna a lista de produtos encontrados
+}
 
     // Método para consultar todos os produtos
   public ArrayList<Produto> consultar() throws Exception {
