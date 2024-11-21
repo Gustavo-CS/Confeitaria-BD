@@ -39,6 +39,20 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jBCadastrar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMICadastrarCliente = new javax.swing.JMenuItem();
+        jMIAtualizarCliente = new javax.swing.JMenuItem();
+        jMIBuscarClientes = new javax.swing.JMenuItem();
+        jMIDeletarCliente = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMICadastrarProduto = new javax.swing.JMenuItem();
+        jMIAtualizarProduto = new javax.swing.JMenuItem();
+        jMIBuscarProdutos = new javax.swing.JMenuItem();
+        jMIDeletarProduto = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMIComprar = new javax.swing.JMenuItem();
+        jMIBuscarCompras = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,43 +111,136 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
             }
         });
 
+        jMenu1.setText("Clientes");
+
+        jMICadastrarCliente.setText("Cadastrar cliente");
+        jMICadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICadastrarClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMICadastrarCliente);
+
+        jMIAtualizarCliente.setText("Atualizar cliente");
+        jMIAtualizarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAtualizarClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMIAtualizarCliente);
+
+        jMIBuscarClientes.setText("Buscar clientes");
+        jMIBuscarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIBuscarClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMIBuscarClientes);
+
+        jMIDeletarCliente.setText("Deletar cliente");
+        jMIDeletarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIDeletarClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMIDeletarCliente);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Produtos");
+
+        jMICadastrarProduto.setText("Cadastrar produto");
+        jMICadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICadastrarProdutoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMICadastrarProduto);
+
+        jMIAtualizarProduto.setText("Atualizar produto");
+        jMIAtualizarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAtualizarProdutoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMIAtualizarProduto);
+
+        jMIBuscarProdutos.setText("Buscar produtos");
+        jMIBuscarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIBuscarProdutosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMIBuscarProdutos);
+
+        jMIDeletarProduto.setText("Deletar produto");
+        jMIDeletarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIDeletarProdutoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMIDeletarProduto);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Compras");
+
+        jMIComprar.setText("Comprar");
+        jMIComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIComprarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIComprar);
+
+        jMIBuscarCompras.setText("Buscar compras");
+        jMIBuscarCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIBuscarComprasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIBuscarCompras);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jSeparator1)
-                .addGap(216, 216, 216))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(171, 171, 171))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTnome, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTpreco, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(102, 102, 102))))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(235, 235, 235)
                 .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSeparator1)
+                .addGap(45, 45, 45))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTnome, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTpreco, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(102, 102, 102))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(jLabel3)
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(9, 9, 9)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -208,6 +315,66 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTprecoActionPerformed
 
+    private void jMICadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICadastrarClienteActionPerformed
+        // TODO add your handling code here:
+        new CadastroCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMICadastrarClienteActionPerformed
+
+    private void jMIAtualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAtualizarClienteActionPerformed
+        // TODO add your handling code here:
+        new CadastroClienteEditar().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIAtualizarClienteActionPerformed
+
+    private void jMIBuscarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBuscarClientesActionPerformed
+        // TODO add your handling code here:
+        new TelaReadCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIBuscarClientesActionPerformed
+
+    private void jMIDeletarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDeletarClienteActionPerformed
+        // TODO add your handling code here:
+        new TeladeDeletarCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIDeletarClienteActionPerformed
+
+    private void jMICadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICadastrarProdutoActionPerformed
+        // TODO add your handling code here:
+        new FormProdutoCadastro().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMICadastrarProdutoActionPerformed
+
+    private void jMIAtualizarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAtualizarProdutoActionPerformed
+        // TODO add your handling code here:
+        new FormUpdateProduto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIAtualizarProdutoActionPerformed
+
+    private void jMIBuscarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBuscarProdutosActionPerformed
+        // TODO add your handling code here:
+        new TelaReadProduto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIBuscarProdutosActionPerformed
+
+    private void jMIDeletarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDeletarProdutoActionPerformed
+        // TODO add your handling code here:
+        new TelaDeletarProduto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIDeletarProdutoActionPerformed
+
+    private void jMIComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIComprarActionPerformed
+        // TODO add your handling code here:
+        new TelaComprarProduto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIComprarActionPerformed
+
+    private void jMIBuscarComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBuscarComprasActionPerformed
+        // TODO add your handling code here:
+        new LerCompra().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIBuscarComprasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,6 +416,20 @@ public class FormProdutoCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenuItem jMIAtualizarCliente;
+    private javax.swing.JMenuItem jMIAtualizarProduto;
+    private javax.swing.JMenuItem jMIBuscarClientes;
+    private javax.swing.JMenuItem jMIBuscarCompras;
+    private javax.swing.JMenuItem jMIBuscarProdutos;
+    private javax.swing.JMenuItem jMICadastrarCliente;
+    private javax.swing.JMenuItem jMICadastrarProduto;
+    private javax.swing.JMenuItem jMIComprar;
+    private javax.swing.JMenuItem jMIDeletarCliente;
+    private javax.swing.JMenuItem jMIDeletarProduto;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTnome;
