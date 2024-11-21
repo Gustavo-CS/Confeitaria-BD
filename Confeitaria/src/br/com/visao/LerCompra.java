@@ -39,16 +39,18 @@ public class LerCompra extends javax.swing.JFrame {
         jBConsulta = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMICadastrarCliente = new javax.swing.JMenuItem();
+        jMIAtualizarCliente = new javax.swing.JMenuItem();
+        jMIBuscarClientes = new javax.swing.JMenuItem();
+        jMIDeletarCliente = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMICadastrarProduto = new javax.swing.JMenuItem();
+        jMIAtualizarProduto = new javax.swing.JMenuItem();
+        jMIBuscarProdutos = new javax.swing.JMenuItem();
+        jMIDeletarProduto = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMIComprar = new javax.swing.JMenuItem();
+        jMIBuscarCompras = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,77 +112,94 @@ public class LerCompra extends javax.swing.JFrame {
 
         jMenu1.setText("Clientes");
 
-        jMenuItem1.setText("Cadastrar cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMICadastrarCliente.setText("Cadastrar cliente");
+        jMICadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMICadastrarClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMICadastrarCliente);
 
-        jMenuItem2.setText("Atualizar cliente");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMIAtualizarCliente.setText("Atualizar cliente");
+        jMIAtualizarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMIAtualizarClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jMIAtualizarCliente);
 
-        jMenuItem3.setText("Buscar clientes");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMIBuscarClientes.setText("Buscar clientes");
+        jMIBuscarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMIBuscarClientesActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(jMIBuscarClientes);
 
-        jMenuItem4.setText("Deletar cliente");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMIDeletarCliente.setText("Deletar cliente");
+        jMIDeletarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMIDeletarClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        jMenu1.add(jMIDeletarCliente);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Produtos");
 
-        jMenuItem5.setText("Cadastrar produto");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMICadastrarProduto.setText("Cadastrar produto");
+        jMICadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMICadastrarProdutoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        jMenu2.add(jMICadastrarProduto);
 
-        jMenuItem8.setText("Atualizar produto");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jMIAtualizarProduto.setText("Atualizar produto");
+        jMIAtualizarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jMIAtualizarProdutoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem8);
+        jMenu2.add(jMIAtualizarProduto);
 
-        jMenuItem7.setText("Buscar produtos");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jMIBuscarProdutos.setText("Buscar produtos");
+        jMIBuscarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jMIBuscarProdutosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem7);
+        jMenu2.add(jMIBuscarProdutos);
 
-        jMenuItem6.setText("Deletar produto");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jMIDeletarProduto.setText("Deletar produto");
+        jMIDeletarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jMIDeletarProdutoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
+        jMenu2.add(jMIDeletarProduto);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Compras");
+
+        jMIComprar.setText("Comprar");
+        jMIComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIComprarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIComprar);
+
+        jMIBuscarCompras.setText("Buscar compras");
+        jMIBuscarCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIBuscarComprasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMIBuscarCompras);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -218,48 +237,6 @@ public class LerCompra extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        new CadastroCliente().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        new CadastroClienteEditar().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        new TelaReadCliente().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        new TeladeDeletarCliente().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-        new FormProdutoCadastro().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jBConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultaActionPerformed
         // TODO add your handling code here:
         try {
@@ -281,6 +258,66 @@ public class LerCompra extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Erro ao consultar compras: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_jBConsultaActionPerformed
+
+    private void jMICadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICadastrarClienteActionPerformed
+        // TODO add your handling code here:
+        new CadastroCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMICadastrarClienteActionPerformed
+
+    private void jMIAtualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAtualizarClienteActionPerformed
+        // TODO add your handling code here:
+        new CadastroClienteEditar().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIAtualizarClienteActionPerformed
+
+    private void jMIBuscarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBuscarClientesActionPerformed
+        // TODO add your handling code here:
+        new TelaReadCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIBuscarClientesActionPerformed
+
+    private void jMIDeletarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDeletarClienteActionPerformed
+        // TODO add your handling code here:
+        new TeladeDeletarCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIDeletarClienteActionPerformed
+
+    private void jMICadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICadastrarProdutoActionPerformed
+        // TODO add your handling code here:
+        new FormProdutoCadastro().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMICadastrarProdutoActionPerformed
+
+    private void jMIAtualizarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAtualizarProdutoActionPerformed
+        // TODO add your handling code here:
+        new FormUpdateProduto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIAtualizarProdutoActionPerformed
+
+    private void jMIBuscarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBuscarProdutosActionPerformed
+        // TODO add your handling code here:
+        new TelaReadProduto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIBuscarProdutosActionPerformed
+
+    private void jMIDeletarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDeletarProdutoActionPerformed
+        // TODO add your handling code here:
+        new TelaDeletarProduto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIDeletarProdutoActionPerformed
+
+    private void jMIComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIComprarActionPerformed
+        // TODO add your handling code here:
+        new TelaComprarProduto().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIComprarActionPerformed
+
+    private void jMIBuscarComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBuscarComprasActionPerformed
+        // TODO add your handling code here:
+        new LerCompra().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMIBuscarComprasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,18 +358,20 @@ public class LerCompra extends javax.swing.JFrame {
     private javax.swing.JButton jBConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem jMIAtualizarCliente;
+    private javax.swing.JMenuItem jMIAtualizarProduto;
+    private javax.swing.JMenuItem jMIBuscarClientes;
+    private javax.swing.JMenuItem jMIBuscarCompras;
+    private javax.swing.JMenuItem jMIBuscarProdutos;
+    private javax.swing.JMenuItem jMICadastrarCliente;
+    private javax.swing.JMenuItem jMICadastrarProduto;
+    private javax.swing.JMenuItem jMIComprar;
+    private javax.swing.JMenuItem jMIDeletarCliente;
+    private javax.swing.JMenuItem jMIDeletarProduto;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
