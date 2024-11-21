@@ -89,7 +89,7 @@ public class CRUDCliente extends DAO {
         }
         return cliente; // Retorna o cliente encontrado ou null
     }
-    
+
     public ArrayList<Cliente> lerTodos() throws Exception {
         ArrayList<Cliente> clienteList = new ArrayList<Cliente>();
         try {
@@ -151,19 +151,30 @@ public class CRUDCliente extends DAO {
     public boolean deletar(String cpf) throws Exception {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
+            
             String query = "DELETE FROM clientes WHERE cpf = ?";
+            String query2 = "select id from clientes where cpf = ?";
+            String query3 = "DELETE FROM compras WHERE cliente_id = ?";
+
+            pst = (PreparedStatement) con.prepareStatement(query2);
+            pst.setString(1, cpf);
+
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            int id = rs.getInt("id");
+            
+            pst = (PreparedStatement) con.prepareStatement(query3);
+
+            pst.setInt(1, id); // Define o ID do cliente a ser excluído
+
+            pst.executeUpdate(); // Executa o comando SQL
+            
             pst = (PreparedStatement) con.prepareStatement(query);
 
             pst.setString(1, cpf); // Define o ID do cliente a ser excluído
 
-            int linhasAfetadas = pst.executeUpdate(); // Executa o comando SQL
-
-            if (linhasAfetadas > 0) {
-                System.out.println("Cliente excluído com sucesso!");
-            } else {
-                System.out.println("Nenhum cliente encontrado com o ID informado.");
-            }
-
+            pst.executeUpdate(); // Executa o comando SQL
+            
             fecharBanco(); // Método para fechar a conexão com o banco
             return true;
         } catch (Exception e) {
