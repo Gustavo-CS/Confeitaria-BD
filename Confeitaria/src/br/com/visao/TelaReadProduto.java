@@ -80,19 +80,19 @@ public class TelaReadProduto extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Produto", "Preço "
+                "ID", "Produto", "Preço "
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -246,7 +246,7 @@ public class TelaReadProduto extends javax.swing.JFrame {
                 } else {
                     for (int i = 0; i < produtos.size(); i++) {
                         p = produtos.get(i);
-                        alunopesque.addRow(new Object[]{p.getNome(), p.getPreco()});
+                        alunopesque.addRow(new Object[]{p.getId(), p.getNome(), p.getPreco()});
                     }
                 }
 

@@ -321,13 +321,6 @@ public class FormUpdateProduto extends javax.swing.JFrame {
                     if (p == null) {
                         JOptionPane.showMessageDialog(null, "não existe produto com o id informado");
                     } else {
-//                        p.setId(Integer.valueOf(jTid.getText()));
-//
-//                        p.setNome(jTnome.getText());
-//                        p.setPreco(Double.valueOf(sPreco));
-//                        mp.atualizar(p);
-//                        ManterProduto mp = new ManterProduto();
-//                        Produto p = mp.consultarInd(id);
 
                         if (!nome.isEmpty()) {
                             p.setNome(nome);
@@ -337,28 +330,12 @@ public class FormUpdateProduto extends javax.swing.JFrame {
                             p.setPreco(Double.parseDouble(sPreco));
                         }
                         mp.atualizar(p);
+                        JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Erro");
                 }
             }
-//            else {
-//                int id = Integer.valueOf(sId);
-//                try {
-//                    ManterProduto mp = new ManterProduto();
-//                    Produto p = mp.consultarInd(id);
-//
-//                    if (!nome.isEmpty()) {
-//                        p.setNome(nome);
-//                    }
-//
-//                    if (!sPreco.isEmpty()) {
-//                        p.setPreco(Double.valueOf(sPreco));
-//                    }
-//                } catch (Exception e) {
-//                    JOptionPane.showMessageDialog(null, "Erro");
-//                }
-//            }
         } else {
             JOptionPane.showMessageDialog(null, "insira o id");
         }
