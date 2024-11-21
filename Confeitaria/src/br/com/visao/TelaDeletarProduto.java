@@ -79,7 +79,7 @@ public class TelaDeletarProduto extends javax.swing.JFrame {
         jLabel2.setText("Escreva o nome do produto a ser deletado:");
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel3.setText("Nome: ");
+        jLabel3.setText("ID do pruduto:");
 
         jTNomeDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +196,7 @@ public class TelaDeletarProduto extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jTNomeDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -235,7 +235,7 @@ public class TelaDeletarProduto extends javax.swing.JFrame {
         ManterProduto m = new ManterProduto();
         if (!nome.isEmpty()) {
             try {
-                if (!m.excluir(Integer.parseInt(jTNomeDeletar.getText()))) {
+                if (m.excluir(Integer.parseInt(jTNomeDeletar.getText()))) {
                     JOptionPane.showMessageDialog(null, "Produto deletado com sucesso");
                 } else {
                     JOptionPane.showMessageDialog(null, "Erro ao deletar produto");
