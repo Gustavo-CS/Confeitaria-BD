@@ -78,7 +78,7 @@ public class TelaReadProduto extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Produto", "Preço  por grama "
+                "Produto", "Preço "
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -140,7 +140,7 @@ public class TelaReadProduto extends javax.swing.JFrame {
                 } else {
                     for (int i = 0; i < produtos.size(); i++) {
                         p = produtos.get(i);
-                        alunopesque.addRow(new Object[]{p.getNome(), p.getPreco_grama()});
+                        alunopesque.addRow(new Object[]{p.getNome(), p.getPreco()});
                     }
                 }
 
