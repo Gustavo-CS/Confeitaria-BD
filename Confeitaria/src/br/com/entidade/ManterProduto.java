@@ -90,16 +90,15 @@ public class ManterProduto extends DAO {
         try {
             abrirBanco(); // Método para abrir a conexão com o banco
             String query = "DELETE FROM produtos_confeitaria WHERE id = ?";
-            pst = con.prepareStatement(query);
+            String query2 = "DELETE FROM compras WHERE produto_id = ?";
+            pst = con.prepareStatement(query2);
 
             pst.setInt(1, id); // Define o ID do produto a ser excluído
-            int linhasAfetadas = pst.executeUpdate(); // Executa o comando SQL
-
-            if (linhasAfetadas > 0) {
-                System.out.println("Produto excluído com sucesso!");
-            } else {
-                System.out.println("Nenhum produto encontrado com o ID informado.");
-            }
+            pst.executeUpdate(); // Executa o comando SQL
+            
+            pst  = con.prepareStatement(query);
+            pst.setInt(1, id); // Define o ID do produto a ser excluído
+            pst.executeUpdate(); // Executa o comando SQL
 
             fecharBanco(); // Método para fechar a conexão com o banco
             return true;
